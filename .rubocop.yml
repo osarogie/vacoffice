@@ -1,0 +1,21 @@
+require: rubocop-rails
+
+inherit_from:
+  - https://shopify.github.io/ruby-style-guide/rubocop.yml
+  - .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake,bundle,yarn}'
+    - 'node_modules/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+  TargetRubyVersion: 2.7
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+  SupportedStyles:
+    - always
+    - never
