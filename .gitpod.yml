@@ -1,4 +1,8 @@
+ports:
+  - port: 3000
+    onOpen: open-preview
 tasks:
-  - init: yarn install
+  - init: bundle install && yarn install
+    command: rails server
 image:
   file: .gitpod.Dockerfile
