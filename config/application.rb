@@ -32,5 +32,25 @@ module DeliveryService
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ENV.fetch("ALLOWED_ORIGINS") { "" }.split(",")
+
+        resource "*", headers: :any, methods: %i[get post options], credentials: true
+      end
+
+      if Rails.env.development?
+        allow do
+          origins %w[localhost:3000 localhost]
+  
+          resource "*", headers: :any, methods: %i[get post options], credentials: true
+        end
+      end
+
+      allow do
+        origins "*"
+        resource "/public/*", headers: :any, methods: :get
+      end
+    end
   end
 end

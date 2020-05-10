@@ -79,3 +79,4 @@ gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_softwarebrothers_theme', github: 'softwarebrothers/rails_admin_softwarebrothers_theme'
 gem 'rubocop-rails', require: false
 gem 'bundler-audit', require: false
+gem "rack-cors", require: "rack/cors"
