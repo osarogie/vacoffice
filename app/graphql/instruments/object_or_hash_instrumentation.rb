@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Instruments
   class ObjectOrHashInstrumentation
     def instrument(_type, field)
