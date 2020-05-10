@@ -57,8 +57,8 @@ gem 'sorbet', group: :development
 gem 'sorbet-runtime'
 
 gem 'graphql'
-gem 'graphql_playground_rails', group: :development
-gem 'graphiql-rails', group: :development
+gem 'graphql_playground_rails'
+gem 'graphiql-rails'
 gem 'graphql-batch'
 
 gem 'money-rails', '~>1.12'
