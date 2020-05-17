@@ -1,6 +1,6 @@
 module Mutations
   class Orders::MakeOrder < BaseMutation
-    graphql_name "AddOrder"
+    graphql_name "MakeOrder"
 
     field :status, Boolean, null: false
     field :message, String, null: true
