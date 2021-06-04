@@ -35,14 +35,22 @@ module DeliveryService
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins ENV.fetch("ALLOWED_ORIGINS") { "" }.split(",")
-
+        resource '/graphql/*',
+                 headers: %w(Authorization),
+                 methods: :any,
+                 expose: %w(Authorization),
+                 max_age: 600
         resource "*", headers: :any, methods: %i[get post options], credentials: true
       end
 
       if Rails.env.development?
         allow do
           origins %w[localhost:3000 localhost]
-  
+          resource '/graphql/*',
+                   headers: %w(Authorization),
+                   methods: :any,
+                   expose: %w(Authorization),
+                   max_age: 600
           resource "*", headers: :any, methods: %i[get post options], credentials: true
         end
       end

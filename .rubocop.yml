@@ -1,7 +1,9 @@
 require: rubocop-rails
 
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
 inherit_from:
-  - https://shopify.github.io/ruby-style-guide/rubocop.yml
   - .rubocop_todo.yml
 
 AllCops:

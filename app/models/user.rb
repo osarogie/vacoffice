@@ -3,7 +3,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable,
-         :trackable, :omniauthable
+         :trackable, :omniauthable,
+         :jwt_authenticatable, jwt_revocation_strategy: JwtDenyListing
   validates :phone_number, phone: { allow_blank: true }
   has_many :orders
   has_paper_trail

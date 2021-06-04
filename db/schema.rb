@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_122658) do
+ActiveRecord::Schema.define(version: 2021_06_04_124249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delivery_packages", force: :cascade do |t|
+    t.text "drop_off_address"
+    t.bigint "order_id", null: false
+    t.datetime "delivered_at"
+    t.string "recipient_name"
+    t.string "recipient_phone"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["order_id"], name: "index_delivery_packages_on_order_id"
+  end
+
+  create_table "jwt_deny_listings", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.index ["jti"], name: "index_jwt_deny_listings_on_jti"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string "name"
@@ -91,4 +110,5 @@ ActiveRecord::Schema.define(version: 2020_05_17_122658) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id"
   end
 
+  add_foreign_key "delivery_packages", "orders"
 end

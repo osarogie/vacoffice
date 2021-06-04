@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
@@ -78,5 +78,10 @@ gem 'phonelib'
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_softwarebrothers_theme', github: 'softwarebrothers/rails_admin_softwarebrothers_theme'
 gem 'rubocop-rails', require: false
+gem "rubocop-shopify", require: false
 gem 'bundler-audit', require: false
 gem "rack-cors", require: "rack/cors"
+gem 'ffi', github: 'ffi/ffi'
+gem "jwt", "~> 2.2"
+
+gem "devise-jwt", "~> 0.8.1"
