@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :trackable, :omniauthable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenyListing
   validates :phone_number, phone: { allow_blank: true }
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_paper_trail
 
   def display_name

@@ -203,7 +203,6 @@ GEM
     paper_trail (12.0.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    paper_trail-association_tracking (2.1.1)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -391,7 +390,6 @@ DEPENDENCIES
   money-rails (~> 1.12)
   omniauth
   paper_trail
-  paper_trail-association_tracking
   pg (>= 0.18, < 2.0)
   phonelib
   pry-byebug
