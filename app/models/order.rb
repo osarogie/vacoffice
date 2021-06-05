@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   validates :rrn, presence: true
   monetize :amount_cents
   before_validation :generate_rrn
+  validates :sender_name, presence: true, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
 
   protected
 

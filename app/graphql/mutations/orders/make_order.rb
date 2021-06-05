@@ -26,7 +26,14 @@ module Mutations
 
         { order: order, status: true, message: message }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid input: #{e.record&.errors&.full_messages&.join(', ')}")
+        order = e.record
+        delivery_package_errors = order&.delivery_packages&.filter_map do |delivery_package|
+          delivery_package.errors.full_messages.join(", ") unless delivery_package.valid?
+        end
+        delivery_package_error_message = delivery_package_errors&.join(", ")
+        message = order&.errors&.full_messages&.join(", ")
+        message = "#{message}. #{delivery_package_error_message}"
+        GraphQL::ExecutionError.new("Invalid input: #{message}")
       end
     end
   end

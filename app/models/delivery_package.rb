@@ -7,4 +7,5 @@ class DeliveryPackage < ApplicationRecord
   }
   belongs_to :order
   validates :recipient_phone, phone: { allow_blank: true }
+  validates :recipient_name, presence: true, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
 end
